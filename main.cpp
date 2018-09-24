@@ -17,11 +17,11 @@ int main()
 	
 	// Creation de la scène
 	Scene scene;
-	scene.addBalle(40, sf::Color::Black, 1, 0, HAUTEUR_FENETRE/2, 0);  //-80/sqrt(2)
-	scene.addBalle(40, sf::Color::Red, 1, LARGEUR_FENETRE-40*2, HAUTEUR_FENETRE/2, 1);  //-80/sqrt(2)
+	//scene.addBalle(40, sf::Color::Black, 1, 0, HAUTEUR_FENETRE/2, 0);  //-80/sqrt(2)
+	//scene.addBalle(40, sf::Color::Red, 1, LARGEUR_FENETRE-40*2, HAUTEUR_FENETRE/2, 1);  //-80/sqrt(2)
 	
-	//scene.addBalle(40, sf::Color::Red, 1, LARGEUR_FENETRE/2, 0, 0);  //-80/sqrt(2)
-	//scene.addBalle(40, sf::Color::Black, 1, LARGEUR_FENETRE/2, HAUTEUR_FENETRE-2*40, 1);
+	scene.addBalle(40, sf::Color::Red, 1, LARGEUR_FENETRE/2, 0, 0);  //-80/sqrt()
+	scene.addBalle(40, sf::Color::Black, 1, LARGEUR_FENETRE/2, HAUTEUR_FENETRE-2*40, 1);
 	
 
 	// Mise en place du timer de mouvement

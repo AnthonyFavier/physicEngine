@@ -303,18 +303,24 @@ bool Scene::gestionCollision()
 				if( abs(Ux1) >= abs(Uy1) )
 					p1=abs(Uy1/Ux1);
 				else
-					p1=PI/2-abs(Ux1/Uy1);
+					p1=(PI/2-abs(Ux1/Uy1));
 
 				if( abs(Ux2) >= abs(Uy2) )
 					p2=abs(Uy2/Ux2);
 				else
-					p2=PI/2-abs(Ux2/Uy2);
+					p2=abs(PI/2-abs(Ux2/Uy2));
+
+				p1=tan(Uy1/Ux1);
+				p2=tan(Uy2/Ux2);
 				
-				a1=(p2*(r1+r2-d))/(p1+p2)*cos(PI/2-angle);
-				a2=-(p1*(r1+r2-d))/(p1+p2)*cos(PI/2-angle);
-				b=(p1*p2*(r1+r2-d))/(p1+p2)*sin(PI/2-angle);
+				//a1=(p2*(r1+r2-d))/(p1+p2)*cos(PI/2-angle);
+				//a2=-(p1*(r1+r2-d))/(p1+p2)*cos(PI/2-angle);
+				//b=(p1*p2*(r1+r2-d))/(p1+p2)*sin(PI/2-angle);
 				
-				
+				a1=(r1+r2-d)/(1+p2/p1);
+				a2=(r1+r2-d)/(1+p1/p2);
+				b=a1*p1;
+
 
 				printf("\nd=%f\np1=%f\np2=%f\na1=%f\na2=%f\nb=%f\nangle=%f\n", d,p1,p2,a1,a2,b,angle);
 

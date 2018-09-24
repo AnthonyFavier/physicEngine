@@ -14,8 +14,8 @@ Balle::Balle(float radius, float masse)
 	Object();
 	m_r=radius;
 	circle.setRadius(m_r);
-	m_vx=10;
-	m_vy=0;
+	m_vx=0;
+	m_vy=10;
 	m_masse=masse;
 }
 
