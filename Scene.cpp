@@ -21,7 +21,10 @@ void Scene::addBalle(float radius, sf::Color color, float m, float x, float y, i
 	balle.setColor(color);
 	balle.setPos(x, y);
 	if(d)
-		balle.setVy(-balle.getVy());
+	{
+		balle.setVx(-balle.getVx());
+		//balle.setVy(-balle.getVy());
+	}
 	listBalle.push_back(balle);
 	m_nbElem+=1;
 	fctMoveScene(this, true);
@@ -275,7 +278,15 @@ bool Scene::gestionCollision()
 //
 // 			FAIRE CONDITION ET PLUSIEURS CAS POUR DEFINITION DE CET ANGLE AUSSI !!!!!!!! classique ou PI/2 - new
 				float angle;
-				angle=PI/2-acos((listBalle[j].getX()-listBalle[i].getX())/(sqrt(pow(listBalle[j].getX()-listBalle[i].getX(),2)+pow(listBalle[j].getY()-listBalle[i].getY(),2))));
+				//angle=PI/2-acos((listBalle[j].getX()-listBalle[i].getX())/(sqrt(pow(listBalle[j].getX()-listBalle[i].getX(),2)+pow(listBalle[j].getY()-listBalle[i].getY(),2))));
+				if(abs(listBalle[j].getX()-listBalle[i].getX())>=(listBalle[j].getY()-listBalle[i].getY()))
+				{
+					angle=atan((listBalle[j].getY()-listBalle[i].getY())/(listBalle[j].getX()-listBalle[i].getX()));
+				}
+				else
+				{
+				}
+
 				// Pour calcul des pentes tester si Vy>Vx et décaller de PI/2, inverse def de la pente x/y au lieu de y/x
 				printf("Detection\nangle=%f\nBall1: x=%f y=%f vx=%f vy=%f\nBall2: x=%f y=%f vx=%f vy=%f\n", angle,listBalle[i].getX(), listBalle[i].getY(), listBalle[i].getVx(), listBalle[i].getVy(), listBalle[j].getX(), listBalle[j].getY(), listBalle[j].getVx(), listBalle[j].getVy());
 				float p1, p2;
@@ -317,14 +328,14 @@ bool Scene::gestionCollision()
 				//a2=-(p1*(r1+r2-d))/(p1+p2)*cos(PI/2-angle);
 				//b=(p1*p2*(r1+r2-d))/(p1+p2)*sin(PI/2-angle);
 				
-				a1=(r1+r2-d)/(1+p2/p1);
-				a2=(r1+r2-d)/(1+p1/p2);
-				b=a1*p1;
+				a1=((r1+r2-d)*Ux1*Uy2)/(Ux1*Uy2+Ux2*Uy1);
+				a2=((r1+r2-d)*Ux2*Uy1)/(Ux1*Uy2+Ux1*Uy2);
+				b=((r1+r2-d)*Uy1*Uy2)/(Ux1+Ux2);
 
 
 				printf("\nd=%f\np1=%f\np2=%f\na1=%f\na2=%f\nb=%f\nangle=%f\n", d,p1,p2,a1,a2,b,angle);
 
-				listBalle[i].setPos(listBalle[i].getX()+a1, listBalle[i].getY()-b);
+				listBalle[i].setPos(listBalle[i].getX()+a1, listBalle[i].getY()+b);
 				listBalle[j].setPos(listBalle[j].getX()+a2, listBalle[j].getY()+b);
 				// Fin recallage
 
