@@ -1,0 +1,24 @@
+#include "Object.h"
+
+Object::Object()
+{
+	m_masse=1;
+	m_x=0;
+	m_y=0;
+	m_vx=0;
+	m_vy=0;
+	m_ax=0;
+	m_ay=0;
+}
+
+Object::~Object()
+{
+}
+
+void Object::getX()
+{
+	return m_x;
+}
+
+void Object::getX()
+	return m_x;

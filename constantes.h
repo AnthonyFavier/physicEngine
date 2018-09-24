@@ -1,0 +1,11 @@
+#ifndef DEF_CONSTANTES
+#define DEF_CONSTANTES
+
+#define LARGEUR_FENETRE 800
+#define HAUTEUR_FENETRE 600
+
+#define PI 3.14159265359
+
+#define DELTA_T 0.1
+//0.01
+#endif

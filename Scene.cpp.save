@@ -1,0 +1,27 @@
+#include "Scene.h"
+
+Scene::Scene()
+{
+	m_nbElem=0;
+}
+
+void Scene::addBalle(Balle balle)
+{
+	listBalle.push_back(obj);
+	m_nbElem+=1;
+}
+
+void Scene::rmvBalle()
+{
+	if(listBalle.size()>0)
+	{
+	listObject.pop_back();
+		m_nbElem-=1;
+	}
+}
+
+int Scene::getNbElem()
+{
+	return m_nbElem;
+}
+
