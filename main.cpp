@@ -4,20 +4,25 @@
 #include "Scene.h"
 #include "CallBackTimer.h"
 #include "fctMoveScene.h"
+#include <math.h>
 
 int main()
 {
 	// Création de la fênetre principale
-	sf::RenderWindow window(sf::VideoMode(LARGEUR_FENETRE, HAUTEUR_FENETRE), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(LARGEUR_FENETRE, HAUTEUR_FENETRE), "Truc qui bouge pas bien");
 	window.clear(sf::Color::White);
 
 	// Variables
 	int i=0;
-
+	
 	// Creation de la scène
 	Scene scene;
-	scene.addBalle(40, sf::Color::Red, 1, LARGEUR_FENETRE/2-56.57, 0, 0);
-	scene.addBalle(40, sf::Color::Black, 1, LARGEUR_FENETRE/2, HAUTEUR_FENETRE-2*40, 1);
+	scene.addBalle(40, sf::Color::Black, 1, 0, HAUTEUR_FENETRE/2, 0);  //-80/sqrt(2)
+	scene.addBalle(40, sf::Color::Red, 1, LARGEUR_FENETRE-40*2, HAUTEUR_FENETRE/2, 1);  //-80/sqrt(2)
+	
+	//scene.addBalle(40, sf::Color::Red, 1, LARGEUR_FENETRE/2, 0, 0);  //-80/sqrt(2)
+	//scene.addBalle(40, sf::Color::Black, 1, LARGEUR_FENETRE/2, HAUTEUR_FENETRE-2*40, 1);
+	
 
 	// Mise en place du timer de mouvement
 	CallBackTimer timer;

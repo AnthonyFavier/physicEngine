@@ -272,6 +272,8 @@ bool Scene::gestionCollision()
 				// pour le moment verticale
 // PETAGE DE CABLE A CAUSE DU RECALLAGE
 // FAUT RECALCULER LES PENTES
+//
+// 			FAIRE CONDITION ET PLUSIEURS CAS POUR DEFINITION DE CET ANGLE AUSSI !!!!!!!! classique ou PI/2 - new
 				float angle;
 				angle=PI/2-acos((listBalle[j].getX()-listBalle[i].getX())/(sqrt(pow(listBalle[j].getX()-listBalle[i].getX(),2)+pow(listBalle[j].getY()-listBalle[i].getY(),2))));
 				// Pour calcul des pentes tester si Vy>Vx et décaller de PI/2, inverse def de la pente x/y au lieu de y/x
@@ -307,10 +309,12 @@ bool Scene::gestionCollision()
 					p2=abs(Uy2/Ux2);
 				else
 					p2=PI/2-abs(Ux2/Uy2);
-
-				a1=(p2*(r1+r2-d)*cos(p1))/(p1+p2);
-				a2=(p1*(r1+r2-d)*cos(p2))/(p1+p2);
-				b=(p1*p2*(r1+r2-d))/(p1+p2);
+				
+				a1=(p2*(r1+r2-d))/(p1+p2)*cos(PI/2-angle);
+				a2=-(p1*(r1+r2-d))/(p1+p2)*cos(PI/2-angle);
+				b=(p1*p2*(r1+r2-d))/(p1+p2)*sin(PI/2-angle);
+				
+				
 
 				printf("\nd=%f\np1=%f\np2=%f\na1=%f\na2=%f\nb=%f\nangle=%f\n", d,p1,p2,a1,a2,b,angle);
 
