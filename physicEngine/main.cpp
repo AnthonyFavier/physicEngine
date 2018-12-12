@@ -6,6 +6,8 @@
 #include "fctMoveScene.h"
 #include <math.h>
 
+// C'est le meilleur monteur physique qui existe
+
 int main()
 {
 	// Création de la fênetre principale
